@@ -5,7 +5,13 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-    },    
+    }, 
+    {
+      path: '/:categoria', 
+      name: 'productos', 
+      conponent: () => import('@/views/ProductosView.vue'),
+      props: true,
+    }   
   ]
 })
 
