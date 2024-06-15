@@ -16,4 +16,12 @@ h1 {
     padding-bottom: 1rem;
     text-transform: capitalize;
 }
+
+@media (max-width: 768px) {
+    h1 {
+        text-align: center;
+        font-size: 2.5rem;
+        color: #f68712;
+    }
+}
 </style>
