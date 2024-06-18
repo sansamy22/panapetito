@@ -2,13 +2,13 @@
     <div class="contenedor">
         <Titulo :titulo="props.categoria" />
         <div class="productos">
-            <div class="product">
+            <div class="producto" v-for="producto in productos" :key="producto.id" >
                 <img class="foto" :src="`/imagenes/${producto.imagen}`" alt="Producto">
                 <div class="informacion">
                     <h3 class="titulo">
                         {{ producto.nombre }}
                     </h3>
-                    <p class="descrpcion">
+                    <p class="descripcion">
                         {{ producto.descripcion }}
                     </p>
                     <p class="precio">
@@ -22,13 +22,18 @@
 </template>
 
 <script setup>
+import {ref, defineProps, watchEffect} from "vue"
 import Titulo from "@/components/TituloSeccion.vue"
 import listaProductos from "@/panaderia.json"
-import {defineProps} from "vue"
 
-const props = defineProps ({
+
+const props = defineProps({
     categoria: String
 })
 
 const productos = ref([])
+
+watchEffect(() => {
+    productos.value = listaProductos.filter((producto) => producto.categoria === props.categoria )
+})
 </script>
